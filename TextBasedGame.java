@@ -42,7 +42,7 @@ public class TextBasedGame {
 
         int healthPotHealing = 30;
         int healthPotDrop = 50;
-        int helthPotNum = 1;
+        int healthPotNum = 1;
 
         // Main game loop
         boolean running = true;
@@ -65,11 +65,24 @@ public class TextBasedGame {
                     System.out.println("1");
                 }
                 else if( input1.equals("2")) {
-                    System.out.println("2");
+                    if(healthPotNum>0){
+                        System.out.println("\tYou drink a health potion, haling you for"+healthPotHealing+"HP");
+                        p1.GainHealth(healthPotHealing);
+                        System.out.println("\tYou now have "+ p1.GetHealth()+"HP");
+                        healthPotNum --;
+                        System.out.println("\t You now have"+ healthPotNum + "health potions remaining! \n");
+
+
+                    }
+                    else {
+                        System.out.println("\tYou don't have any more health potions, slay enemies to have a chance at getting more");
+                    }
                 }
                 else if(input1.equals("3")) {
-                    System.out.println("3");
+
                     System.out.println("\tUou exit the Dungeon and finish your adventure. Thx 4 playing!");
+                    p1.PlayerHealth(0);
+                    running = false;
                 }
 
 
